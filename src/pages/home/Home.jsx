@@ -1,4 +1,5 @@
 import Hero from "./Banner/Hero";
+import BistroBoxSection from "./bistroBox/BistroBoxSection";
 import OrderSection from "./order/OrderSection";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
     <>
       <Hero></Hero>
       <OrderSection></OrderSection>
+      <BistroBoxSection></BistroBoxSection>
     </>
   );
 };
