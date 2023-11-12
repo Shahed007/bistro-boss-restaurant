@@ -1,5 +1,13 @@
+import Hero from "./Banner/Hero";
+import OrderSection from "./order/OrderSection";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <Hero></Hero>
+      <OrderSection></OrderSection>
+    </>
+  );
 };
 
 export default Home;

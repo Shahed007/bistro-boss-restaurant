@@ -6,7 +6,7 @@ const MainLayout = () => {
   return (
     <div className="overflow-x-hidden">
       <Nav></Nav>
-      <main className="min-h-[calc(100vh-80.6px)]">
+      <main className="min-h-[calc(100vh-560px)]">
         <Outlet></Outlet>
       </main>
       <footer>

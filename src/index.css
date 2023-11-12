@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;800&family=Raleway:wght@600&display=swap");
+
 @import "keep-react/src/main.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.carousel .thumbs-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
