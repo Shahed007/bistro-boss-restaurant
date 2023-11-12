@@ -1,5 +1,7 @@
+import ChefSection from "../chef/ChefSection";
 import Hero from "./Banner/Hero";
 import BistroBoxSection from "./bistroBox/BistroBoxSection";
+import CallUsSection from "./callUs/CallUsSection";
 import MenuSection from "./menu/MenuSection";
 import OrderSection from "./order/OrderSection";
 
@@ -10,6 +12,8 @@ const Home = () => {
       <OrderSection></OrderSection>
       <BistroBoxSection></BistroBoxSection>
       <MenuSection></MenuSection>
+      <CallUsSection></CallUsSection>
+      <ChefSection></ChefSection>
     </>
   );
 };

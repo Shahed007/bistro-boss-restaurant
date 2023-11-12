@@ -3,7 +3,6 @@ import axios from "axios";
 import Container from "../../../components/Container/Container";
 import Title from "../../../components/title/Title";
 import MenuCard from "../../../components/card/MenuCard";
-import { Button } from "keep-react";
 import { Link } from "react-router-dom";
 
 const MenuSection = () => {
@@ -20,7 +19,6 @@ const MenuSection = () => {
   if (isLoading) return "reloading";
 
   if (error) return "error";
-  console.log(data);
   return (
     <section className="mt-20">
       <Container>
