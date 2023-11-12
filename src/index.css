@@ -9,4 +9,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .carousel .thumbs-wrapper {
+    display: none;
+  }
 }

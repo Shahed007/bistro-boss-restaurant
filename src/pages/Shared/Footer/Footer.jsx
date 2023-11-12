@@ -31,7 +31,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-text_color_primary flex justify-center items-center">
-        <p className="md:text-xl text-base font-medium text-white py-4">
+        <p className="md:text-xl text-base text-center font-medium text-white py-4">
           Copyright © CulinaryCloud. All rights reserved.
         </p>
       </div>
