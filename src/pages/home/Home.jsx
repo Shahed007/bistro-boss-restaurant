@@ -5,6 +5,7 @@ import CallUsSection from "./callUs/CallUsSection";
 import MenuSection from "./menu/MenuSection";
 import OrderSection from "./order/OrderSection";
 import OurMenuSection from "./ourMenu/OurMenuSection";
+import Testimonial from "./testimonial/testimonial";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <CallUsSection></CallUsSection>
       <ChefSection></ChefSection>
       <OurMenuSection></OurMenuSection>
+      <Testimonial></Testimonial>
     </>
   );
 };
