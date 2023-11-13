@@ -5,7 +5,7 @@ const Nav = () => {
   return (
     <Navbar
       fluid={true}
-      className="bg-text_color_primary/20 backdrop-blur-sm px-0 mx-0 mb-auto fixed top-0 left-0 w-full z-10 text-white "
+      className="bg-text_color_primary/20 backdrop-blur-sm px-0 mx-0 mb-auto fixed top-0 left-0 w-full z-50 text-white "
     >
       <Navbar.Container className="flex items-center justify-between mx-0 max-w-7xl  px-0 lg:px-5">
         <Navbar.Container className="flex items-center">

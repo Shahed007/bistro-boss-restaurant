@@ -17,7 +17,7 @@ const ChefSection = () => {
 
   if (isLoading) return "Loading...";
   if (error) return "error";
-  console.log(data);
+
   return (
     <section className="mt-20">
       <Container>

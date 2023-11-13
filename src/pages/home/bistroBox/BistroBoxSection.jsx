@@ -14,7 +14,7 @@ const BistroBoxSection = () => {
           }}
           className="md:p-24 p-6 rounded-md flex justify-center items-center"
         >
-          <div className="bg-white/80 backdrop-blur-sm px-3 py-7  md:py-24 flex flex-col justify-center items-center rounded-md ">
+          <div className="bg-white/80 backdrop-blur-sm px-3 py-7 text-text_color_primary  md:py-24 flex flex-col justify-center items-center rounded-md ">
             <h1 className="text-3xl font-cinzel">Bistro Boss</h1>
             <p className="md:w-2/3 md:text-center">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.

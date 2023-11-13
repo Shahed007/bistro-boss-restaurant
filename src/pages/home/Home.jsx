@@ -4,6 +4,7 @@ import BistroBoxSection from "./bistroBox/BistroBoxSection";
 import CallUsSection from "./callUs/CallUsSection";
 import MenuSection from "./menu/MenuSection";
 import OrderSection from "./order/OrderSection";
+import OurMenuSection from "./ourMenu/OurMenuSection";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <MenuSection></MenuSection>
       <CallUsSection></CallUsSection>
       <ChefSection></ChefSection>
+      <OurMenuSection></OurMenuSection>
     </>
   );
 };

@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 
 const MenuCard = ({ menu }) => {
-  console.log(Object.keys(menu).join(","));
   const { name, recipe, image, price } = menu || {};
   return (
     <div className="flex lg:items-center lg:flex-row flex-col gap-6">
