@@ -1,17 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import PropTypes from "prop-types";
+import useAxios from "./useAxios";
 
-const useTanStack = ({ key, route, response }) => {
-  const { isLoading, error, data } = useQuery({
+const useTanStack = (key, route, response) => {
+  const axios = useAxios();
+  const { isLoading, error, data, refetch } = useQuery({
     queryKey: [key, response],
     queryFn: async () => {
-      const res = await axios.get(`${route}`);
+      const res = await axios.get(route);
       return res.data;
     },
   });
 
-  return { isLoading, error, data };
+  return { isLoading, error, data, refetch };
 };
 
 export default useTanStack;

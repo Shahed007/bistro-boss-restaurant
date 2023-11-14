@@ -54,8 +54,12 @@ const Testimonial = () => {
                   size={50}
                   activeColor="#ffd700"
                 />
-                <img className="mb-10" src={quote} alt="quote icon" />
-                <p className="w-3/4 mx-auto text-xl text-text_color_secondary mb-2">
+                <img
+                  className="mb-10  w-20 h-20"
+                  src={quote}
+                  alt="quote icon"
+                />
+                <p className="w-3/4 mx-auto text-base sm:text-xl text-text_color_secondary mb-2">
                   {review.details}
                 </p>
                 <h3 className="text-primary_color text-7xl font-inter font-medium">
