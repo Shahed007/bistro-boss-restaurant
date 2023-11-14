@@ -3,6 +3,7 @@ import useTanStack from "../../hooks/api/useTanStack";
 import banner1 from "../../assets/menu/banner3.jpg";
 import banner2 from "../../assets/menu/dessert-bg.jpeg";
 import banner3 from "../../assets/menu/pizza-bg.jpg";
+import banner4 from "../../assets/menu/salad-bg.jpg";
 import Container from "../../components/Container/Container";
 import Title from "../../components/title/Title";
 import Menu from "../Shared/menu/Menu";
@@ -16,6 +17,7 @@ const OurMenu = () => {
   const offered = data?.filter((offered) => offered.category === "offered");
   const dessert = data?.filter((dessert) => dessert.category === "dessert");
   const pizza = data?.filter((pizza) => pizza.category === "pizza");
+  const salad = data?.filter((salad) => salad.category === "salad");
 
   return (
     <>
@@ -64,6 +66,21 @@ const OurMenu = () => {
           <div className="mt-20">
             <Menu menu={pizza}></Menu>
           </div>
+        </Container>
+      </section>
+      <section className="mt-20">
+        <PageCover
+          img={banner4}
+          title={"SALADS"}
+          description={
+            "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+          }
+        ></PageCover>
+        <Container>
+          <div className="mt-20">
+            <Menu menu={salad}></Menu>
+          </div>
+          <PrimaryButton text={"ORDER YOUR FAVOURITE FOOD"} link={"#"}></PrimaryButton>
         </Container>
       </section>
     </>
