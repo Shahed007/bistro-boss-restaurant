@@ -6,8 +6,20 @@ import "react-tabs/style/react-tabs.css";
 import { useState } from "react";
 import useTanStack from "../../hooks/api/useTanStack";
 import FoodCard from "../../components/card/FoodCard";
+import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 const OurShop = () => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const { category } = useParams();
+  const CategoryArray = [
+    "salad",
+    "pizza",
+    "soup",
+    "dessert",
+    "drink",
+    "offered",
+  ];
+  const initialIndex = CategoryArray.indexOf(category);
+  const [tabIndex, setTabIndex] = useState(initialIndex);
   const { isLoading, error, data } = useTanStack("menu", "menus");
 
   if (isLoading) return "loading...";
@@ -17,8 +29,12 @@ const OurShop = () => {
   const pizza = data?.filter((pizza) => pizza.category === "pizza");
   const salad = data?.filter((salad) => salad.category === "salad");
   const soup = data?.filter((soup) => soup.category === "soup");
+  const offered = data?.filter((offered) => offered.category === "offered");
   return (
     <>
+      <Helmet>
+        <title>Bistro Boss || Our Shop</title>
+      </Helmet>
       <PageCover
         title={"OUR SHOP"}
         subTitle={"Would you like to try a dish?"}
@@ -47,6 +63,9 @@ const OurShop = () => {
                 </Tab>
                 <Tab className="border-b-2 border-b-transparent cursor-pointer">
                   Drinks
+                </Tab>
+                <Tab className="border-b-2 border-b-transparent cursor-pointer">
+                  Offered
                 </Tab>
               </TabList>
 
@@ -81,6 +100,13 @@ const OurShop = () => {
               <TabPanel>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
                   {drinks?.map((salad) => (
+                    <FoodCard key={salad._id} food={salad}></FoodCard>
+                  ))}
+                </div>
+              </TabPanel>
+              <TabPanel>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+                  {offered?.map((salad) => (
                     <FoodCard key={salad._id} food={salad}></FoodCard>
                   ))}
                 </div>

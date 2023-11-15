@@ -34,7 +34,7 @@ const OurMenu = () => {
           <Menu menu={offered}></Menu>
           <PrimaryButton
             text={"ORDER YOUR FAVOURITE FOOD"}
-            link={"#"}
+            link={`/ourShop/offered`}
           ></PrimaryButton>
         </Container>
       </section>
@@ -52,7 +52,7 @@ const OurMenu = () => {
           </div>
           <PrimaryButton
             text={"ORDER YOUR FAVOURITE FOOD"}
-            link={"#"}
+            link={`/ourShop/dessert`}
           ></PrimaryButton>
         </Container>
       </section>
@@ -68,6 +68,10 @@ const OurMenu = () => {
           <div className="mt-20">
             <Menu menu={pizza}></Menu>
           </div>
+          <PrimaryButton
+            text={"ORDER YOUR FAVOURITE FOOD"}
+            link={`/ourShop/pizza`}
+          ></PrimaryButton>
         </Container>
       </section>
       <section className="mt-20">
@@ -84,7 +88,7 @@ const OurMenu = () => {
           </div>
           <PrimaryButton
             text={"ORDER YOUR FAVOURITE FOOD"}
-            link={"#"}
+            link={`/ourShop/salad`}
           ></PrimaryButton>
         </Container>
       </section>
@@ -102,7 +106,7 @@ const OurMenu = () => {
           </div>
           <PrimaryButton
             text={"ORDER YOUR FAVOURITE FOOD"}
-            link={"#"}
+            link={`/ourShop/soup`}
           ></PrimaryButton>
         </Container>
       </section>

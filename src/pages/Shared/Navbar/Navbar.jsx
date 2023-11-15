@@ -1,5 +1,5 @@
 import { Navbar, Button } from "keep-react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Nav = () => {
   return (
@@ -10,14 +10,16 @@ const Nav = () => {
       <Navbar.Container className="flex items-center justify-between mx-0 max-w-7xl  px-0 lg:px-5">
         <Navbar.Container className="flex items-center">
           <Navbar.Brand customClass="gap-0">
-            <div>
-              <h1 className=" md:text-[32px] text-2xl font-cinzel font-black">
-                BISTRO BOSS
-              </h1>
-              <p className="-mt-3 font-bold text-base md:text-2xl">
-                Restaurant
-              </p>
-            </div>
+            <Link>
+              <div>
+                <h1 className=" md:text-[32px] text-2xl font-cinzel font-black">
+                  BISTRO BOSS
+                </h1>
+                <p className="-mt-3 font-bold text-base md:text-2xl">
+                  Restaurant
+                </p>
+              </div>
+            </Link>
           </Navbar.Brand>
 
           <Navbar.Collapse
@@ -32,7 +34,7 @@ const Nav = () => {
               <NavLink to="/contactUs">CONTACT us</NavLink>
               <NavLink to="/dashboard">DASHBOARD</NavLink>
               <NavLink to="/ourMenu">Our Menu</NavLink>
-              <NavLink to="/ourShop">Our Shop</NavLink>
+              <NavLink to={`/ourShop/salad`}>Our Shop</NavLink>
             </Navbar.Container>
           </Navbar.Collapse>
         </Navbar.Container>
@@ -46,7 +48,7 @@ const Nav = () => {
             <NavLink to="/contactUs">CONTACT us</NavLink>
             <NavLink to="/dashboard">DASHBOARD</NavLink>
             <NavLink to="/ourMenu">Our Menu</NavLink>
-            <NavLink to="/ourShop">Our Shop</NavLink>
+            <NavLink to="/ourShop/salad">Our Shop</NavLink>
           </Navbar.Container>
           <div className="lg:flex hidden">
             <Button size="md" type="default">
