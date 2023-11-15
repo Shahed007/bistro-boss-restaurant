@@ -12,6 +12,12 @@
   overflow-x: auto;
 }
 
+.tabList .react-tabs__tab--selected {
+  border: 0px 0px 0px 0px;
+  color: #cd9003;
+  border-bottom: 2px solid #cd9003;
+}
+
 @media screen and (max-width: 768px) {
   .carousel .thumbs-wrapper {
     display: none;
