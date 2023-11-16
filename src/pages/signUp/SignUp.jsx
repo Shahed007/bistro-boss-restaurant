@@ -10,10 +10,11 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <section
       className=" "
@@ -23,7 +24,7 @@ const SignUp = () => {
       }}
     >
       <Container className="pt-10">
-        <div className="flex md:flex-row flex-col items-center gap-6 w-full h-full bg-transparent shadow-md shadow-gray-400 p-6">
+        <div className="flex md:flex-row flex-col items-center gap-6 w-full h-full bg-transparent shadow-md shadow-gray-400 p-3">
           <div className="flex-1 flex flex-col justify-center items-center w-full">
             <div className="md:max-w-sm w-full md:mx-auto">
               <Title
@@ -42,12 +43,14 @@ const SignUp = () => {
                     Name
                   </label>
                   <input
+                    {...register("name", { required: true })}
                     className=" block p-3 rounded-md shadow border border-gray-50 focus:outline focus:outline-primary_color"
                     name="name"
                     id="name"
                     type="text"
                     placeholder="Enter your name"
                   />
+                  {errors.name && <span>This field is required</span>}
                 </div>
                 <div className="flex flex-col gap-2 w-full">
                   <label
@@ -57,12 +60,14 @@ const SignUp = () => {
                     Email
                   </label>
                   <input
+                    {...register("email", { required: true })}
                     className=" block p-3 rounded-md shadow border border-gray-50 focus:outline focus:outline-primary_color"
                     name="email"
                     id="email"
                     type="email"
                     placeholder="Enter your email"
                   />
+                  {errors.email && <span>This field is required</span>}
                 </div>
                 <div className="flex flex-col gap-2 w-full">
                   <label
@@ -72,12 +77,33 @@ const SignUp = () => {
                     Password
                   </label>
                   <input
+                    {...register("password", {
+                      required: true,
+                      minLength: 6,
+                      maxLength: 20,
+                      pattern:
+                        /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,
+                    })}
                     className=" block p-3 rounded-md shadow border border-gray-50 focus:outline focus:outline-primary_color"
                     name="password"
                     id="password"
                     type="password"
                     placeholder="Enter your password"
                   />
+                  {errors.password?.type === "required" && (
+                    <span className="text-red-500">Fill out this field</span>
+                  )}
+                  {errors.password?.type === "minLength" && (
+                    <span className="text-red-500">
+                      Password more than 6 character
+                    </span>
+                  )}
+                  {errors.password?.type === "pattern" && (
+                    <span className="text-red-500">
+                      Password must be a lowercase letter, one uppercase letter,
+                      one special character
+                    </span>
+                  )}
                 </div>
                 <input
                   type="submit"
