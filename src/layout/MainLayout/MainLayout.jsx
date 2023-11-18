@@ -1,14 +1,16 @@
 import { Outlet } from "react-router-dom";
-import Nav from "../../pages/Shared/Navbar/Navbar";
+
 import Footer from "../../pages/Shared/Footer/Footer";
+import Navbar from "../../pages/Shared/Navbar/Navbar";
 
 const MainLayout = () => {
   return (
     <div className="overflow-x-hidden">
-      <Nav></Nav>
-      <main className="min-h-[calc(100vh-560px)]">
-        <Outlet></Outlet>
-      </main>
+      <Navbar>
+        <main className="min-h-[calc(100vh-560px)]">
+          <Outlet></Outlet>
+        </main>
+      </Navbar>
       <footer>
         <Footer></Footer>
       </footer>

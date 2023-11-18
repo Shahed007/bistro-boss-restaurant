@@ -5,15 +5,41 @@ import Container from "../../components/Container/Container";
 import Title from "../../components/title/Title";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaGoogle, FaGithub } from "react-icons/fa";
+import axios from "axios";
+import useAuth from "../../hooks/api/useAuth";
 
 const SignUp = () => {
+  const { createUser, profileUpdate } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (inputFiled) => {
+    console.log(inputFiled.image[0]);
+
+    const file = inputFiled?.image[0];
+
+    const formData = new FormData();
+    formData.append("image", file);
+    try {
+      await createUser(inputFiled?.email, inputFiled?.password);
+    } catch (err) {
+      console.log(err);
+    }
+    try {
+      const res = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_IMAGE_APIKEY
+        }`,
+        formData
+      );
+      const { data } = res?.data || {};
+      const image = data?.display_url;
+      await profileUpdate(inputFiled?.name, image);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <section
@@ -49,6 +75,24 @@ const SignUp = () => {
                     id="name"
                     type="text"
                     placeholder="Enter your name"
+                  />
+                  {errors.name && <span>This field is required</span>}
+                </div>
+                <div className="flex flex-col gap-2 w-full">
+                  <label
+                    htmlFor="image"
+                    className="text-3xl font-semibold text-text_color_primary"
+                  >
+                    Image
+                  </label>
+                  <input
+                    {...register("image", { required: true })}
+                    className=" block p-3 rounded-md shadow border-dashed file:border-dashed  bg-white focus:outline focus:outline-primary_color"
+                    name="image"
+                    id="image"
+                    type="file"
+                    accept="image/*"
+                    placeholder="Enter your image"
                   />
                   {errors.name && <span>This field is required</span>}
                 </div>
