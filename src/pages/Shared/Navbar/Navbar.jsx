@@ -4,9 +4,12 @@ import Container from "../../../components/Container/Container";
 import useAuth from "../../../hooks/api/useAuth";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useCart } from "../../../hooks/api/api";
 const Navbar = ({ children }) => {
   const { user, logout } = useAuth();
   const [userToggle, setUserToggle] = useState(false);
+  const { cart } = useCart();
+  console.log(cart);
   const link = (
     <>
       <li>
@@ -54,13 +57,13 @@ const Navbar = ({ children }) => {
       });
   };
   return (
-    <div className="drawer">
+    <div className="drawer w-full">
       <input
         id="my-drawer-3"
         type="checkbox"
         className="drawer-toggle text-white"
       />
-      <div className="drawer-content flex flex-col">
+      <div className="drawer-content flex flex-col w-full">
         {/* Navbar */}
         <div className="w-full navbar p-0 py-1 bg-text_color_primary/50 fixed top-0 left-0 z-[100]">
           <Container className="w-full">
@@ -101,7 +104,7 @@ const Navbar = ({ children }) => {
                 {link}
               </ul>
               <ul className="flex items-center gap-3 text-white text-lg font-inter font-bold">
-                <li>
+                <li className="relative">
                   <Link>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -118,6 +121,9 @@ const Navbar = ({ children }) => {
                       />
                     </svg>
                   </Link>
+                  <span className="flex justify-center items-center absolute top-4 -right-1 text-xs h-4 w-4  rounded-full bg-primary_color">
+                    {cart?.length}
+                  </span>
                 </li>
                 <li>
                   {user ? (

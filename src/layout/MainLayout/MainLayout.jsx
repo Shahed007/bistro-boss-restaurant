@@ -5,9 +5,9 @@ import Navbar from "../../pages/Shared/Navbar/Navbar";
 
 const MainLayout = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden w-full">
       <Navbar>
-        <main className="min-h-[calc(100vh-560px)]">
+        <main className="w-full">
           <Outlet></Outlet>
         </main>
       </Navbar>
