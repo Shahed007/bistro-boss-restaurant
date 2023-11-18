@@ -6,6 +6,7 @@ import router from "./router/router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./context/AuthProvider";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
+          <Toaster position="top-center" reverseOrder={false} />
           <RouterProvider router={router} />
         </AuthProvider>
       </QueryClientProvider>

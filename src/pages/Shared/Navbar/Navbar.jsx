@@ -3,8 +3,9 @@ import { Link, NavLink } from "react-router-dom";
 import Container from "../../../components/Container/Container";
 import useAuth from "../../../hooks/api/useAuth";
 import { useState } from "react";
+import toast from "react-hot-toast";
 const Navbar = ({ children }) => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [userToggle, setUserToggle] = useState(false);
   const link = (
     <>
@@ -42,6 +43,16 @@ const Navbar = ({ children }) => {
       </li>
     </>
   );
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        toast.success("logout successful");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="drawer">
       <input
@@ -128,14 +139,17 @@ const Navbar = ({ children }) => {
                           </Link>
                         </li>
                         <li>
-                          <button className="btn btn-ghost btn-block">
+                          <button
+                            onClick={handleLogout}
+                            className="btn btn-ghost btn-block"
+                          >
                             Logout
                           </button>
                         </li>
                       </ul>
                     </div>
                   ) : (
-                    <Link>Login</Link>
+                    <Link to="/login">Login</Link>
                   )}
                 </li>
               </ul>

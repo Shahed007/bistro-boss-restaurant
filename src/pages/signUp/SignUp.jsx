@@ -3,10 +3,12 @@ import signUpBanner from "../../assets/others/authentication.png";
 import signImage from "../../assets/others/authentication2.png";
 import Container from "../../components/Container/Container";
 import Title from "../../components/title/Title";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaGoogle, FaGithub } from "react-icons/fa";
 import axios from "axios";
 import useAuth from "../../hooks/api/useAuth";
+import useAxiosPublic from "../../hooks/api/useAxiosPublic";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const { createUser, profileUpdate } = useAuth();
@@ -15,9 +17,10 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const axiosPublic = useAxiosPublic();
   const onSubmit = async (inputFiled) => {
-    console.log(inputFiled.image[0]);
-
     const file = inputFiled?.image[0];
 
     const formData = new FormData();
@@ -37,6 +40,19 @@ const SignUp = () => {
       const { data } = res?.data || {};
       const image = data?.display_url;
       await profileUpdate(inputFiled?.name, image);
+      const user = {
+        email: inputFiled?.email,
+        mod: "guest",
+        image,
+      };
+      const res2 = await axiosPublic.put("users", user);
+      if (res2?.data.upsertedCount) {
+        toast.success("SignUp successful");
+        location?.state ? navigate(location.state.form) : navigate("/");
+      } else if (res2?.data.modifiedCount) {
+        toast.success("SignUp successful");
+        location?.state ? navigate(location.state.form) : navigate("/");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -158,7 +174,9 @@ const SignUp = () => {
               <div className="flex flex-col justify-center items-center mt-8">
                 <p className="text-primary_color font-inter font-medium">
                   Already registered? Go to{" "}
-                  <Link className="text-text_color_primary">log in</Link>
+                  <Link to="/login" className="text-text_color_primary">
+                    log in
+                  </Link>
                 </p>
                 <p className="mt-6 text-xl font-inter font-medium">
                   Or sign up with
