@@ -1,75 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { IoMdHome, IoMdMenu } from "react-icons/io";
-import {
-  FaCalendarAlt,
-  FaCalendarCheck,
-  FaEnvelope,
-  FaShoppingBag,
-  FaShoppingCart,
-} from "react-icons/fa";
-import { MdReviews } from "react-icons/md";
+import { FaEnvelope, FaShoppingBag } from "react-icons/fa";
 
-const SideNav = () => {
-  const guestLinks = (
-    <>
-      <NavLink
-        to="/dashboard"
-        className={({ isActive }) =>
-          isActive
-            ? "uppercase flex items-center gap-2 text-white"
-            : "uppercase flex items-center gap-2"
-        }
-      >
-        <IoMdHome className="text-2xl " />{" "}
-        <span className="text-base font-bold inline-block">User Home</span>
-      </NavLink>
-      <NavLink
-        to="/reservation"
-        className={({ isActive }) =>
-          isActive
-            ? "uppercase flex items-center gap-2 text-white"
-            : "uppercase flex items-center gap-2"
-        }
-      >
-        <FaCalendarAlt className="text-2xl " />{" "}
-        <span className="text-base font-bold inline-block">reservation</span>
-      </NavLink>
-      <NavLink
-        to="/myCart"
-        className={({ isActive }) =>
-          isActive
-            ? "uppercase flex items-center gap-2 text-white"
-            : "uppercase flex items-center gap-2"
-        }
-      >
-        <FaShoppingCart className="text-2xl " />{" "}
-        <span className="text-base font-bold inline-block">My Cart</span>
-      </NavLink>
-      <NavLink
-        to="/addReviews"
-        className={({ isActive }) =>
-          isActive
-            ? "uppercase flex items-center gap-2 text-white"
-            : "uppercase flex items-center gap-2"
-        }
-      >
-        <MdReviews className="text-2xl " />{" "}
-        <span className="text-base font-bold inline-block">Add reviews</span>
-      </NavLink>
-      <NavLink
-        to="/myBooking"
-        className={({ isActive }) =>
-          isActive
-            ? "uppercase flex items-center gap-2 text-white"
-            : "uppercase flex items-center gap-2"
-        }
-      >
-        <FaCalendarCheck className="text-2xl " />{" "}
-        <span className="text-base font-bold inline-block">my booking</span>
-      </NavLink>
-    </>
-  );
+import PropTypes from "prop-types";
 
+const SideNav = ({ link }) => {
   const links = (
     <>
       <NavLink
@@ -126,7 +61,7 @@ const SideNav = () => {
       </div>
 
       <ul className="font-cinzel flex flex-col gap-6 border-b border-gray-100 pb-6">
-        {guestLinks}
+        {link}
       </ul>
 
       <ul className="pt-6 flex flex-col font-cinzel gap-6">{links}</ul>
@@ -135,5 +70,9 @@ const SideNav = () => {
 };
 // snort
 //kuno file ke string akare pathano jabe na
+
+SideNav.propTypes = {
+  link: PropTypes.node.isRequired,
+};
 
 export default SideNav;

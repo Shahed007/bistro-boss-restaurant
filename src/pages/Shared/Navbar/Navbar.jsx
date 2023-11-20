@@ -3,11 +3,13 @@ import Container from "../../../components/Container/Container";
 import useAuth from "../../../hooks/api/useAuth";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useCart } from "../../../hooks/api/api";
+import { useAdmin, useCart } from "../../../hooks/api/api";
+
 const Navbar = () => {
   const { user, logout } = useAuth();
   const [userToggle, setUserToggle] = useState(false);
   const { cart } = useCart();
+  const { isLoading, error, admin } = useAdmin();
   console.log(cart);
   const link = (
     <>
@@ -45,6 +47,9 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  if (isLoading) return "Loading...";
+  if (error) return "error";
 
   const handleLogout = () => {
     logout()
@@ -139,9 +144,21 @@ const Navbar = () => {
                         }`}
                       >
                         <li>
-                          <Link to="/dashboard" className="hover:underline">
-                            DASHBOARD
-                          </Link>
+                          {admin ? (
+                            <Link
+                              to="/dashboard-admin"
+                              className="hover:underline"
+                            >
+                              DASHBOARD
+                            </Link>
+                          ) : (
+                            <Link
+                              to="/dashboard-user"
+                              className="hover:underline"
+                            >
+                              DASHBOARD
+                            </Link>
+                          )}
                         </li>
                         <li>
                           <button

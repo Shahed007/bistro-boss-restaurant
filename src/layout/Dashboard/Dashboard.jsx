@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
-import SideNav from "./sideNav/SideNav";
+import UserSideNav from "./sideNav/UserSideNav";
 
 const Dashboard = () => {
   return (
     <div className="overflow-x-hidden flex h-screen">
       <nav className="basis-1/5 bg-[#D1A054] p-6">
-        <SideNav></SideNav>
+        <UserSideNav></UserSideNav>
       </nav>
       <main className="grow ">
         <Outlet></Outlet>
