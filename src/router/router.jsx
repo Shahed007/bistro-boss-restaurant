@@ -5,6 +5,10 @@ import OurMenu from "../pages/ourMenu/OurMenu";
 import OurShop from "../pages/ourShop/OurShop";
 import SignUp from "../pages/signUp/SignUp";
 import Login from "../pages/login/Login";
+import Dashboard from "../layout/Dashboard/Dashboard";
+import UserHome from "../layout/Dashboard/rightSideContent/guest/UserHome";
+import AdminDashboard from "../layout/Dashboard/adminDashboard/AdminDashboard";
+import AdminHome from "../layout/Dashboard/adminDashboard/AdminHome";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +36,26 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login></Login>,
+  },
+  {
+    path: "/dashboard-user",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        index: true,
+        element: <UserHome></UserHome>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard-Admin",
+    element: <AdminDashboard></AdminDashboard>,
+    children: [
+      {
+        index: true,
+        element: <AdminHome></AdminHome>,
+      },
+    ],
   },
 ]);
 export default router;

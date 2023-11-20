@@ -1,11 +1,10 @@
-import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
 import Container from "../../../components/Container/Container";
 import useAuth from "../../../hooks/api/useAuth";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useCart } from "../../../hooks/api/api";
-const Navbar = ({ children }) => {
+const Navbar = () => {
   const { user, logout } = useAuth();
   const [userToggle, setUserToggle] = useState(false);
   const { cart } = useCart();
@@ -162,7 +161,6 @@ const Navbar = ({ children }) => {
             </div>
           </Container>
         </div>
-        {children}
       </div>
       <div className="drawer-side z-[150]">
         <ul className="flex gap-4 flex-col p-4 w-80 min-h-full bg-base-200 text-lg font-inter font-bold">
@@ -192,10 +190,6 @@ const Navbar = ({ children }) => {
       </div>
     </div>
   );
-};
-
-Navbar.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default Navbar;

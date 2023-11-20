@@ -42,7 +42,7 @@ const SignUp = () => {
       await profileUpdate(inputFiled?.name, image);
       const user = {
         email: inputFiled?.email,
-        mod: "guest",
+        roll: "guest",
         image,
       };
       const res2 = await axiosPublic.put("users", user);

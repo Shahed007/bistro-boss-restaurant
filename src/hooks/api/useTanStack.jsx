@@ -6,7 +6,6 @@ const useTanStack = (key, route, response) => {
   const axios = useAxios();
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: [key, response],
-    enabled: false,
     queryFn: async () => {
       const res = await axios.get(route);
       return res.data;

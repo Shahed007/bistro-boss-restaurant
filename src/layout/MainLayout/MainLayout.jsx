@@ -6,11 +6,10 @@ import Navbar from "../../pages/Shared/Navbar/Navbar";
 const MainLayout = () => {
   return (
     <div className="overflow-x-hidden w-full">
-      <Navbar>
-        <main className="w-full">
-          <Outlet></Outlet>
-        </main>
-      </Navbar>
+      <Navbar></Navbar>
+      <main className="w-full">
+        <Outlet></Outlet>
+      </main>
       <footer>
         <Footer></Footer>
       </footer>
