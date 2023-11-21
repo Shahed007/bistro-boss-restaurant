@@ -10,7 +10,7 @@ const Navbar = () => {
   const [userToggle, setUserToggle] = useState(false);
   const { cart } = useCart();
   const { isLoading, error, admin } = useAdmin();
-  console.log(cart);
+  console.log(admin);
   const link = (
     <>
       <li>
@@ -109,7 +109,7 @@ const Navbar = () => {
               </ul>
               <ul className="flex items-center gap-3 text-white text-lg font-inter font-bold">
                 <li className="relative">
-                  <Link>
+                  <Link to="/dashboard-user/my-cart">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -144,7 +144,7 @@ const Navbar = () => {
                         }`}
                       >
                         <li>
-                          {admin ? (
+                          {admin?.admin ? (
                             <Link
                               to="/dashboard-admin"
                               className="hover:underline"
