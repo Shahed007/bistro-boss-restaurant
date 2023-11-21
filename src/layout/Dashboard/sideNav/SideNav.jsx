@@ -72,7 +72,7 @@ const SideNav = ({ link }) => {
 //kuno file ke string akare pathano jabe na
 
 SideNav.propTypes = {
-  link: PropTypes.node.isRequired,
+  link: PropTypes.node,
 };
 
 export default SideNav;

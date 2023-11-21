@@ -1,22 +1,32 @@
+import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import useTanStack from "./useTanStack";
 import { useEffect } from "react";
+import useAxios from "./useAxios";
 
 export const useCart = () => {
   const { user } = useAuth();
+  const axios = useAxios();
   const {
     isLoading,
     error,
     data: cart,
     refetch,
-  } = useTanStack("cart", `cart?email=${user?.email}`);
+  } = useQuery({
+    queryKey: ["cart"],
+    queryFn: async () => {
+      const res = await axios.get(`cart?email=${user?.email}`);
+      return res.data;
+    },
+  });
 
   useEffect(() => {
-    if (user?.email) {
+    if (user) {
       refetch();
     }
   }, [user, refetch]);
-  return { isLoading, error, cart };
+
+  return { isLoading, error, cart, refetch };
 };
 
 export const useMenus = () => {

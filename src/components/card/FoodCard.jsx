@@ -4,10 +4,12 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../hooks/api/useAxiosPublic";
 import toast from "react-hot-toast";
+import { useCart } from "../../hooks/api/api";
 
 const FoodCard = ({ food }) => {
   const { name, recipe, image, category, price } = food || {};
   const { user } = useAuth();
+  const { refetch } = useCart();
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
 
@@ -39,8 +41,9 @@ const FoodCard = ({ food }) => {
 
     const res = await axiosPublic.post("cart", cart);
     console.log(res.data);
-    if(res?.data.insertedId){
-      toast.success('Item added cart successfully')
+    if (res?.data.insertedId) {
+      refetch();
+      toast.success("Item added cart successfully");
     }
   };
   return (
